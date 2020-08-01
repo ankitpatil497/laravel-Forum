@@ -68,7 +68,7 @@
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
                     <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/home')); ?>">Home</a>
+                        <a href="<?php echo e(url('/discussion')); ?>">Discussion</a>
                     <?php else: ?>
                         <a href="<?php echo e(route('login')); ?>">Login</a>
 
@@ -81,18 +81,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel Forum
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="<?php echo e(route('discussion.index')); ?>">Discussion</a>
+                  
                 </div>
             </div>
         </div>

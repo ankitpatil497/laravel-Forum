@@ -74,13 +74,16 @@
                 </div>
             </div>
         </nav>
-
-        <?php if(auth()->guard()->check()): ?>
+        <?php if(!in_array(request()->path(),['login','register','password/reset','password/email'])): ?>
             <main class="container py-4">
                 <div class="row">
                     <div class="col-4">
+                        <?php if(auth()->guard()->check()): ?>
                             <a href="<?php echo e(route('discussion.create')); ?>" style="width: 100%; colour=#fff" class="btn btn-success my-2">Add Discussion</a>
-                        
+                        <?php else: ?>
+                            <a href="<?php echo e(route('login')); ?>" style="width: 100%; colour=#fff" class="btn btn-success my-2">Sing in to Add Discussion</a>
+                            
+                        <?php endif; ?>                    
                         <div class="card">
                             <div class="card-header">
                                 Channel
@@ -102,11 +105,12 @@
                     </div>
                 </div>
             </main>
-        <?php else: ?>  
+        <?php else: ?>
             <main class="py-4">
                 <?php echo $__env->yieldContent('content'); ?>
             </main>
         <?php endif; ?>
+       
     </div>
 
     <?php echo $__env->yieldContent('js'); ?>
