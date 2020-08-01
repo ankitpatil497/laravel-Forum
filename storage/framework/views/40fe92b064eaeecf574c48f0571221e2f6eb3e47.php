@@ -79,14 +79,23 @@
             <main class="container py-4">
                 <div class="row">
                     <div class="col-4">
-                        <ul class="list-group">
-                            <?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <li class="list-group-item">
-                                    <?php echo e($channel->name); ?>
+                            <a href="<?php echo e(route('discussion.create')); ?>" style="width: 100%; colour=#fff" class="btn btn-success my-2">Add Discussion</a>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                Channel
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <?php $__currentLoopData = $channels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $channel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li class="list-group-item">
+                                            <?php echo e($channel->name); ?>
 
-                                </li>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </ul>
+                                        </li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-8">
                         <?php echo $__env->yieldContent('content'); ?>

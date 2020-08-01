@@ -1,7 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="d-flex justify-content-end md-2">
-    <a href="<?php echo e(route('discussion.create')); ?>" class="btn btn-success">Add Discussion</a>
-</div>
+v>
 <div class="card">
     <div class="card-header"><?php echo e(__('Dashboard')); ?></div>
 
