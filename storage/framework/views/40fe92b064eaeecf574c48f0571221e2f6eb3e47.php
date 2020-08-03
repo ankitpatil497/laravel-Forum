@@ -35,7 +35,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <?php if(auth()->guard()->check()): ?>
+                        <li class="nav-item">
+                            <a href="<?php echo e(route('user.notification')); ?>" class="nav-link">
+                                <span class="badge badge-pill badge-info" style="color: white">
+                                    <?php echo e(auth()->user()->unreadNotifications->count()); ?>
 
+                                    unread Notifications
+                                </span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
