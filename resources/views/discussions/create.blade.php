@@ -45,3 +45,4 @@
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"></script>
 @endsection
+

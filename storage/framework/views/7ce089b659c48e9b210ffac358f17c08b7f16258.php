@@ -9,8 +9,33 @@
 
                 </strong>
             </div>
-            <hr><?php echo $discussion->content; ?>
+            <hr><?php echo $discussion->content; ?>  
 
+            <?php if($discussion->bestReply): ?>
+                <div class="card bg-success my-5" style="color: white">
+
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <img height="40px" width="40px" style="border-radius: 50%" src="<?php echo e(Gravatar::src($discussion->bestReply->owner->email )); ?>" alt="">
+                                <strong>
+                                    <span class="font-weight-bold ml-2"><?php echo e($discussion->bestReply->owner->name); ?></span> 
+                                </strong>
+                            </div>
+                            <div style="color: rgb(160, 0, 0)">
+                                <strong>
+                                    BEST REPLY
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <?php echo $discussion->bestReply->content; ?>
+
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>         
     <?php $__currentLoopData = $discussion->replies()->paginate(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reply): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -18,14 +43,25 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <div>
-                          <img height="40px" width="40px" style="border-radius: 50%" src="<?php echo e(Gravatar::src($reply->owner->email )); ?>" alt="">
+                        <img height="40px" width="40px" style="border-radius: 50%" src="<?php echo e(Gravatar::src($reply->owner->email )); ?>" alt="">
                         <span class="font-weight-bold ml-2"><?php echo e($reply->owner->name); ?></span> 
                     </div>
+                    <div>
+                        <?php if(auth()->user()->id==$discussion->user_id): ?>
+                        <form action="<?php echo e(route('mark-best-reply',['discussion'=>$discussion->slug,'reply'=>$reply->id])); ?>" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <button type="submit" class="btn btn-info btn-sm" style="color: #fff">Mark as best reply</button>
+                        </form>
+                        <?php endif; ?>
+                    </div>
                 </div>
+                
             </div>
             <div class="card-body">
                 <hr><?php echo $reply->content; ?>
 
+
+               
             </div>
         </div>   
              

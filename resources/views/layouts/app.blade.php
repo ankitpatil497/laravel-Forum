@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="col-4">
                         @auth
-                            <a href="{{route('discussion.create')}}" style="width: 100%; colour=#fff" class="btn btn-success my-2">Add Discussion</a>
+                            <a href="{{route('discussion.create')}}" style="width: 100%; color: #fff" class="btn btn-info my-2">Add Discussion</a>
                         @else
                             <a href="{{route('login')}}" style="width: 100%; colour=#fff" class="btn btn-success my-2">Sing in to Add Discussion</a>
                             

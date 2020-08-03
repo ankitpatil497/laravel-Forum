@@ -43,4 +43,6 @@
 <?php $__env->startSection('js'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"></script>
 <?php $__env->stopSection(); ?>
+
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/ankit/Desktop/Laravel_project/forum/resources/views/discussions/create.blade.php ENDPATH**/ ?>
