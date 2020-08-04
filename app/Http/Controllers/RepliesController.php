@@ -42,8 +42,7 @@ class RepliesController extends Controller
             'discussion_id'=>$discussion->id,
             'content'=>$request->content,
         ]);
-        if($discussion->autho
-        r->id==auth()->user()->id){
+        if($discussion->author->id==auth()->user()->id){
             $discussion->author->notify(new AddReplyAdded($discussion));
         }
         
