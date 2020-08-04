@@ -103,7 +103,9 @@
                                 <ul class="list-group">
                                     @foreach ($channels as $channel)
                                         <li class="list-group-item">
-                                            {{$channel->name}}
+                                            <a href="{{route('discussion.index')}}?channel={{$channel->slug}}">
+                                                {{$channel->name}}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

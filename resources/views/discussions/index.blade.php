@@ -17,7 +17,7 @@
         </div>
     </div>           
 @endforeach
-{{$diss->links()}}
+{{$diss->appends(['channle'=>request()->query('channele')])->links()}}
 @endsection
 
 

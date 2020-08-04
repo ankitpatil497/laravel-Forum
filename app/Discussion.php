@@ -25,6 +25,10 @@ class Discussion extends Model
             'reply_id'=>$reply->id
         ]);
 
+        if($reply->owner->id==$this->author->id){
+            return;
+        }
+
         $reply->owner->notify(new MarkAsBestReply($reply->discussion));
     }
 
@@ -32,4 +36,16 @@ class Discussion extends Model
     public function bestReply(){
         return $this->belongsTo(Reply::class,'reply_id');
     } 
+
+    public function scopeFilterbyChannels($builder){
+        if(request()->query('channel')){
+            $channle=Channle::where('slug',request()->query('channel'))->first();
+
+            if($channle){
+                return $builder->where('channel_id',$channle->id);
+            }
+            return $builder;
+        }
+        return $builder;
+    }
 }

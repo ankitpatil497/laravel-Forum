@@ -16,7 +16,7 @@
         </div>
     </div>           
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-<?php echo e($diss->links()); ?>
+<?php echo e($diss->appends(['channle'=>request()->query('channele')])->links()); ?>
 
 <?php $__env->stopSection(); ?>
 

@@ -32,7 +32,7 @@ class MarkAsBestReply extends Notification
     {
         return ['mail','database'];
     }
-
+e
     /**
      * Get the mail representation of the notification.
      *
