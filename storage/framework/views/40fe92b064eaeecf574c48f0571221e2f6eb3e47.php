@@ -45,7 +45,11 @@
                                 </span>
                             </a>
                         </li>
+                    
                         <?php endif; ?>
+                        <li class="nav-item">
+                            <a href="<?php echo e(route('discussion.index')); ?>" class="nav-link">Discussion</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -47,11 +47,13 @@
                         <span class="font-weight-bold ml-2"><?php echo e($reply->owner->name); ?></span> 
                     </div>
                     <div>
-                        <?php if(auth()->user()->id==$discussion->user_id): ?>
-                        <form action="<?php echo e(route('mark-best-reply',['discussion'=>$discussion->slug,'reply'=>$reply->id])); ?>" method="POST">
-                            <?php echo csrf_field(); ?>
-                            <button type="submit" class="btn btn-info btn-sm" style="color: #fff">Mark as best reply</button>
-                        </form>
+                        <?php if(auth()->guard()->check()): ?>
+                            <?php if(auth()->user()->id==$discussion->user_id): ?>
+                            <form action="<?php echo e(route('mark-best-reply',['discussion'=>$discussion->slug,'reply'=>$reply->id])); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <button type="submit" class="btn btn-info btn-sm" style="color: #fff">Mark as best reply</button>
+                            </form>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>

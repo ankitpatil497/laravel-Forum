@@ -47,12 +47,14 @@
                         <span class="font-weight-bold ml-2">{{$reply->owner->name}}</span> 
                     </div>
                     <div>
-                        @if (auth()->user()->id==$discussion->user_id)
-                        <form action="{{route('mark-best-reply',['discussion'=>$discussion->slug,'reply'=>$reply->id])}}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-info btn-sm" style="color: #fff">Mark as best reply</button>
-                        </form>
-                        @endif
+                        @auth
+                            @if (auth()->user()->id==$discussion->user_id)
+                            <form action="{{route('mark-best-reply',['discussion'=>$discussion->slug,'reply'=>$reply->id])}}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-info btn-sm" style="color: #fff">Mark as best reply</button>
+                            </form>
+                            @endif
+                        @endauth
                     </div>
                 </div>
                 
